@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: docker-test-deployment
+  labels:
+    app: docker-test
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: docker-test
+  template:
+    metadata:
+      labels:
+        app: docker-test
+    spec:
+      containers:
+      - name: pipeline-full-cn
+        image: mohannadmm/docker_testpipeline_test:v1
+        ports:
+        - containerPort: 80
+
